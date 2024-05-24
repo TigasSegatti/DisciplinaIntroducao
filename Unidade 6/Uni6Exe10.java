@@ -9,17 +9,7 @@ public class Uni6Exe10 {
         int valor;
         int op = 0;
         do {
-            System.out.println("Menu");
-            System.out.println("1- Incluir valor");
-            System.out.println("2-Pesquisar valor");
-            System.out.println("3-Alterar valor");
-            System.out.println("4-Excluir valor");
-            System.out.println("5-Mostrar valores");
-            System.out.println("6-Ordenar valores");
-            System.out.println("7-Inverter valores");
-            System.out.println("8-Sair do sistema");
-            System.out.println("informe o que deseja fazer: ");
-            op = scan.nextInt();
+            this.exibirMenu(scan, op);
             switch (op) {
                 case 1:
                     if (tamanho < capacidade) {
@@ -119,7 +109,19 @@ public class Uni6Exe10 {
         scan.close();
 
     }
-
+    public void exibirMenu(Scanner scan,int op){
+        System.out.println("Menu");
+        System.out.println("1- Incluir valor");
+        System.out.println("2-Pesquisar valor");
+        System.out.println("3-Alterar valor");
+        System.out.println("4-Excluir valor");
+        System.out.println("5-Mostrar valores");
+        System.out.println("6-Ordenar valores");
+        System.out.println("7-Inverter valores");
+        System.out.println("8-Sair do sistema");
+        System.out.println("informe o que deseja fazer: ");
+            op = scan.nextInt();
+    }
     public static void main(String[] args) {
         new Uni6Exe10();
     }
