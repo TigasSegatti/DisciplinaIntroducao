@@ -6,9 +6,7 @@ public class Uni6Exe10 {
         int capacidade = 50;
         int tamanho = 0;
         int vetor[] = new int[10];
-        int valor=0;
-        int op = 0;
-        int indice=0;
+        int valor=0,op = 0,indice=0,temp= 0;
         do {
             this.exibirMenu(scan, op);
             switch (op) {
@@ -25,42 +23,22 @@ public class Uni6Exe10 {
                    this.excluirValor(vetor,indice,tamanho,scan);
                     break;
                 case 5:
-                    for (int i = 0; i < vetor.length; i++) {
-                        System.out.print("Indice: " + i + " valor : " + vetor[i]);
-                        System.out.println();
-                    }
+                    this.mostrarValor(vetor);
                     break;
                 case 6:
-                    int aux = 0;
-                    for (int i = 0; i < vetor.length; i++) {
-                        for (int j = 0; j < 9; j++) {
-                            if (vetor[j] > vetor[j + 1]) {
-                                aux = vetor[j];
-                                vetor[j] = vetor[j + 1];
-                                vetor[j + 1] = aux;
-                            }
-                        }
-                    }
+                    this.ordenarValores(vetor);
                     break;
                 case 7:
-                int temp= 0;
-                for(int i= 0; i<vetor.length;i++){
-                    for(int j=0;j<i;j++){
-                        temp=vetor[i];
-                        vetor[i]=vetor[j];
-                        vetor[j]=temp;
-                    }
-                }
+                this.inverterValores(vetor, temp);
+
                     break;
                 default:
                     System.out.println("erro");
                     break;
             }
-
         } while (op != 8);
 
         scan.close();
-
     }
     public void exibirMenu(Scanner scan,int op){
         System.out.println("Menu");
@@ -74,6 +52,33 @@ public class Uni6Exe10 {
         System.out.println("8-Sair do sistema");
         System.out.println("informe o que deseja fazer: ");
             op = scan.nextInt();
+    }
+    public void inverterValores(int [] vetor,int temp){
+        for(int i= 0; i<vetor.length;i++){
+            for(int j=0;j<i;j++){
+                temp=vetor[i];
+                vetor[i]=vetor[j];
+                vetor[j]=temp;
+            }
+        }
+    }
+    public void ordenarValores(int [] vetor){
+        int aux = 0;
+        for (int i = 0; i < vetor.length; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (vetor[j] > vetor[j + 1]) {
+                    aux = vetor[j];
+                    vetor[j] = vetor[j + 1];
+                    vetor[j + 1] = aux;
+                }
+            }
+        }
+    }
+    public void mostrarValor(int[] vetor){
+        for (int i = 0; i < vetor.length; i++) {
+            System.out.print("Indice: " + i + " valor : " + vetor[i]);
+            System.out.println();
+        }
     }
     public void excluirValor(int[] vetor,int indice,int tamanho, Scanner scan){
         System.out.println("informe o indice que deseja excluir: ");
