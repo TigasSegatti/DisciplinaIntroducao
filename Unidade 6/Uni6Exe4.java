@@ -4,9 +4,9 @@ public class Uni6Exe4 {
     public Uni6Exe4() {
 
         // Definindo vetores
-        int vetor1[]= new int[12];
-        int vetor2[]= new int[12];
-        int vetorSoma[]= new int[12];
+        int vetor1[]= new int[10];
+        int vetor2[]= new int[10];
+        int vetorSoma[]= new int[10];
         
         // parte Ler
         this.ler(vetor1, vetor2);
