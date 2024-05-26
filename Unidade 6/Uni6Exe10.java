@@ -5,7 +5,7 @@ public class Uni6Exe10 {
         Scanner scan = new Scanner(System.in);
         int capacidade = 50;
         int tamanho = 0;
-        int vetor[] = new int[10];
+        int vetor[] = new int[50];
         int valor=0,op = 0,indice=0,temp= 0;
         do {
             this.exibirMenu(scan, op);
