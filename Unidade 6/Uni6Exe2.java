@@ -4,7 +4,7 @@ public class Uni6Exe2 {
     public Uni6Exe2() {
         Scanner entrada = new Scanner(System.in);
         double soma = 0, media = 0;
-        double[] valores = new double[4];
+        double[] valores = new double[12];
         soma = this.metodoLer(valores, entrada);
         media = this.metodoCalculo(soma, valores);
         this.metodoExibir(valores, media);
@@ -21,7 +21,7 @@ public class Uni6Exe2 {
     }
 
     public double metodoCalculo(double soma, double[] valores) {
-        double media = soma / 4;
+        double media = soma / 12;
         return media;
     }
 
