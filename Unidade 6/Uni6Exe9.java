@@ -1,75 +1,83 @@
-import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Uni6Exe9 {
     public Uni6Exe9() {
-        final int TOTAL_CLIENTES = 30;
         Scanner scanner = new Scanner(System.in);
-        DecimalFormat df= new DecimalFormat("0.0");
-        int sexo;
-        int[] sexos = new int[TOTAL_CLIENTES];
-        int[] notas = new int[TOTAL_CLIENTES];
-        int[] idades = new int[TOTAL_CLIENTES];
 
-        for (int i = 0; i < TOTAL_CLIENTES; i++) {
-            System.out.println("Cliente " + (i + 1) + ":");
-            System.out.print("Sexo (1=feminino, 2=masculino): ");
-            sexo=scanner.nextInt();
-            while (sexo!=1 && sexo!=2) {
-                System.out.println("Informe corretamente o sexo. \n1=feminino e 2=masculino");
-                sexo=scanner.nextInt();  
-              }
-            sexos[i] = sexo;
-            System.out.print("Nota (0 a 10): ");
+        int[] sexos = new int[30]; 
+        int[] notas = new int[30];
+        int[] idades = new int[30];
+
+        lerDados(scanner, sexos, notas, idades);
+
+        double notaMedia = calcularNotaMedia(notas);
+        double notaMediaHomens = calcularNotaMediaHomens(sexos, notas);
+        int notaMulherMaisJovem = calcularNotaMulherMaisJovem(sexos, notas, idades);
+        int mulheresComMaisDe50NotaSuperiorMedia = contarMulheresComMaisDe50NotaSuperiorMedia(sexos, notas, idades, notaMedia);
+
+        System.out.println("Nota média recebida pelo cinema: " + notaMedia);
+        System.out.println("Nota média atribuída pelos homens: " + notaMediaHomens);
+        System.out.println("Nota atribuída pela mulher mais jovem: " + notaMulherMaisJovem);
+        System.out.println("Número de mulheres com mais de 50 anos que deram nota superior à média recebida pelo cinema: " + mulheresComMaisDe50NotaSuperiorMedia);
+    }
+
+    private static void lerDados(Scanner scanner, int[] sexos, int[] notas, int[] idades) {
+        for (int i = 0; i < 30; i++) {
+            System.out.println("Digite o sexo do cliente (1=feminino, 2=masculino):");
+            sexos[i] = scanner.nextInt();
+            System.out.println("Digite a nota do cliente (0 a 10):");
             notas[i] = scanner.nextInt();
-            System.out.print("Idade: ");
+            System.out.println("Digite a idade do cliente:");
             idades[i] = scanner.nextInt();
         }
+    }
 
+    private static double calcularNotaMedia(int[] notas) {
         double somaNotas = 0;
         for (int nota : notas) {
             somaNotas += nota;
         }
-        double mediaNotas = somaNotas / TOTAL_CLIENTES;
+        return somaNotas / notas.length;
+    }
 
+    private static double calcularNotaMediaHomens(int[] sexos, int[] notas) {
         double somaNotasHomens = 0;
-        int contagemHomens = 0;
-        for (int i = 0; i < TOTAL_CLIENTES; i++) {
+        int totalHomens = 0;
+        for (int i = 0; i < sexos.length; i++) {
             if (sexos[i] == 2) {
                 somaNotasHomens += notas[i];
-                contagemHomens++;
+                totalHomens++;
             }
         }
-        double mediaNotasHomens = (contagemHomens == 0) ? 0 : somaNotasHomens / contagemHomens;
+        if (totalHomens > 0) {
+            return somaNotasHomens / totalHomens;
+        } else {
+            return 0;
+        }
+    }
 
+    private static int calcularNotaMulherMaisJovem(int[] sexos, int[] notas, int[] idades) {
+        int notaMulherMaisJovem = Integer.MAX_VALUE;
         int idadeMulherMaisJovem = Integer.MAX_VALUE;
-        int notaMulherMaisJovem = -1;
-        for (int i = 0; i < TOTAL_CLIENTES; i++) {
+        for (int i = 0; i < sexos.length; i++) {
             if (sexos[i] == 1 && idades[i] < idadeMulherMaisJovem) {
                 idadeMulherMaisJovem = idades[i];
                 notaMulherMaisJovem = notas[i];
             }
         }
+        return notaMulherMaisJovem;
+    }
 
-        int mulheresMais50NotaSuperiorMedia = 0;
-        for (int i = 0; i < TOTAL_CLIENTES; i++) {
-            if (sexos[i] == 1 && idades[i] > 50 && notas[i] > mediaNotas) {
-                mulheresMais50NotaSuperiorMedia++;
+    private static int contarMulheresComMaisDe50NotaSuperiorMedia(int[] sexos, int[] notas, int[] idades, double notaMedia) {
+        int count = 0;
+        for (int i = 0; i < sexos.length; i++) {
+            if (sexos[i] == 1 && idades[i] > 50 && notas[i] > notaMedia) {
+                count++;
             }
         }
-
-        System.out.println("Nota média recebida pelo cinema: "+ df.format(mediaNotas));
-        System.out.println("Nota média atribuída pelos homens: "+df.format(mediaNotasHomens));
-        if (notaMulherMaisJovem != -1) {
-            System.out.println("Nota atribuída pela mulher mais jovem: "+df.format(notaMulherMaisJovem));
-        } else {
-            System.out.println("Não houve mulheres na pesquisa.");
-        }
-        System.out.printf("Mulheres com mais de 50 anos que deram nota superior à média: %d\n",
-                mulheresMais50NotaSuperiorMedia);
-
-        scanner.close();
+        return count;
     }
+    
 
     public static void main(String[] args) {
         new Uni6Exe9();
