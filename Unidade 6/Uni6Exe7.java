@@ -1,59 +1,42 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Uni6Exe7 {
-    int[] vetor;
-    int quantidade;
-
     public Uni6Exe7() {
         Scanner scan = new Scanner(System.in);
-        int N;
+        int tamanho;
         do {
-            System.out.print("Informe o tamanho do vetor (máximo 20): ");
-            N = scan.nextInt();
-        } while (N < 1 || N > 20);
-
-        vetor = new int[N];
-        quantidade = 0;
-
-        while (quantidade < N) {
-            System.out.print("Informe um número inteiro: ");
-            int numero = scan.nextInt();
-            if (!existeNoVetor(numero)) {
-                vetor[quantidade] = numero;
-                quantidade++;
-            } else {
-                System.out.println("O número " + numero + " já existe no vetor. Informe outro número.");
+            System.out.println("Informe o tamanho do vetor: ");
+            tamanho = scan.nextInt();
+            if (tamanho <= 0 || tamanho > 20) {
+                System.out.println("Valor inválido! Por favor, informe um valor entre 1 e 20.");
             }
-        }
+        } while (tamanho <= 0 || tamanho > 20);
 
-        ordenarVetor();
-        exibirVetor();
-        scan.close();
-    }
+        int vetor[] = new int[tamanho];
+        int valor;
 
-    public void ordenarVetor() {
-        Arrays.sort(vetor);
-    }
-
-    public void exibirVetor() {
-        System.out.print("Vetor ordenado: ");
+        // parte de inserir
         for (int i = 0; i < vetor.length; i++) {
-            System.out.print(vetor[i] + (i < vetor.length - 1 ? " " : "\n"));
-        }
-    }
-
-    public boolean existeNoVetor(int numero) {
-        for (int i = 0; i < quantidade; i++) {
-            if (vetor[i] == numero) {
-                return true;
+            boolean existe = false;
+            System.out.println("Informe um valor para inserir no vetor: ");
+            valor = scan.nextInt();
+            for (int j = 0; j < i; j++) {
+                if (valor == vetor[j]) {
+                    existe = true;
+                    break;
+                }
+            }
+            if (!existe) {
+                vetor[i] = valor;
+            } else {
+                System.out.println("Valor já existente no vetor");
+                i--;
             }
         }
-        return false;
+        scan.close();
     }
 
     public static void main(String[] args) {
         new Uni6Exe7();
     }
-
 }
