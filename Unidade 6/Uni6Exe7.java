@@ -33,6 +33,23 @@ public class Uni6Exe7 {
                 i--;
             }
         }
+
+        System.out.println("Agora ordenando o vetor: ");
+        int aux = 0;
+        for (int i = 0; i < tamanho; i++) {
+            for (int j = 0; j < tamanho-1; j++) {
+                if (vetor[j] > vetor[j + 1]) {
+                    aux = vetor[j];
+                    vetor[j] = vetor[j + 1];
+                    vetor[j + 1] = aux;
+                    
+                }
+            }
+        }
+        System.out.println("Vetor ordenado: ");
+        for(int i=0;i<tamanho;i++){
+            System.out.println("Indice: "+i+" Valor: "+vetor[i]);
+        }
         scan.close();
     }
 
