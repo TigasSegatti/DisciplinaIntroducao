@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Uni6Exe10 {
     public Uni6Exe10() {
         Scanner scan = new Scanner(System.in);
-        int capacidade = 50;
+        int capacidade = 10;
         int tamanho = 0;
         int vetor[] = new int[10];
         int valor;
