@@ -6,9 +6,24 @@ public class Uni6Exe9 {
         int[] sexos = new int[10];
         float[] notas = new float[10];
         int[] idades = new int[10];
+
+        this.preencherVetor(scan, 0, sexos, notas, 0, 0, idades);
         int sexo, idade;
         float somaMasculina = 0, somaNotas = 0, notaMulherNova = -1, mediaNotas;
-        
+        int qtdMulheres,qtdHomens;
+
+
+        mediaNotas = somaNotas / 10;
+
+        float mediaMasc = this.mediaMasc(sexos, notas);
+        notaMulherNova = this.notaMulherNova(sexos, idades, notas);
+        int qtdMulheres50 = this.qtdMulheres50(sexos, idades, notas, mediaNotas);
+
+        this.exbirTudo(mediaNotas, mediaMasc, notaMulherNova, qtdMulheres50);
+    }
+    public void preencherVetor(Scanner scan,int sexo,int[] sexos,float[] notas,float somaNotas,int idade,int idades[]){
+        int qtdHomens=0;
+        int qtdMulheres=0;
         for (int i = 0; i < 10; i++) {
             System.out.println("Informe 1 = Feminino e 2 = Masculino: ");
             sexo = scan.nextInt();
@@ -38,14 +53,6 @@ public class Uni6Exe9 {
             }
             idades[i] = idade;
         }
-
-        mediaNotas = somaNotas / 10;
-
-        float mediaMasc = this.mediaMasc(sexos, notas);
-        notaMulherNova = this.notaMulherNova(sexos, idades, notas);
-        int qtdMulheres50 = this.qtdMulheres50(sexos, idades, notas, mediaNotas);
-
-        this.exbirTudo(mediaNotas, mediaMasc, notaMulherNova, qtdMulheres50);
     }
 
     public void exbirTudo(float mediaNotas, float mediaMasc, float notaMulherNova, int qtdMulheres50) {
