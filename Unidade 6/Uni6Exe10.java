@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Uni6Exe10 {
     public Uni6Exe10() {
-        Scanner scan = new Scanner(System.in);
+       /* Scanner scan = new Scanner(System.in);
         int capacidade = 10;
         int tamanho = 0;
         int vetor[] = new int[10];
@@ -22,6 +22,7 @@ public class Uni6Exe10 {
             op = scan.nextInt();
             switch (op) {
                 case 1:
+
                     if (tamanho < capacidade) {
                         System.out.print("Digite o valor a ser incluído: ");
                         valor = scan.nextInt();
@@ -119,7 +120,15 @@ public class Uni6Exe10 {
 
         } while (op != 8);
 
+        scan.close();*/
+        Scanner scan = new Scanner(System.in);
+        
+
         scan.close();
+
+
+
+
     }
     public static void main(String[] args) {
         new Uni6Exe10();
