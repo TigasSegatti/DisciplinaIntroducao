@@ -144,6 +144,9 @@ public class Uni6Exe10 {
                     int numero=scan.nextInt();
                     quantidade=this.inserir(vetor, scan, numero);
                     break;
+                    case 2:
+                   if( this.pesquisar(scan, vetor));
+                    break;
             
                 default:
                     break;
@@ -154,6 +157,22 @@ public class Uni6Exe10 {
 
 
 
+
+    }
+    private void pesquisar(Scanner scan,int[] vetor) {
+        System.out.println("Informe um número para localizar: ");
+        int numero=scan.nextInt();
+        boolean achei = true;
+        for (int i = 0; i < vetor.length; i++) {
+            if (numero == vetor[i]) {
+                System.out.println("Encontrei o numero " + numero + " no inidice: " + i);
+            } else {
+                achei = false;
+            }
+        }
+        if (!achei) {
+            System.out.println("Não encontrei o valor");
+        }
 
     }
     private int inserir(int[] vetor,Scanner scan,int tamanho) {
