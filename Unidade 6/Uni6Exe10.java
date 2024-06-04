@@ -23,15 +23,7 @@ public class Uni6Exe10 {
             switch (op) {
                 case 1:
 
-                    if (tamanho < capacidade) {
-                        System.out.print("Digite o valor a ser incluído: ");
-                        valor = scan.nextInt();
-                        vetor[tamanho] = valor;
-                        tamanho++;
-                        System.out.println("Valor " + valor + " incluído no vetor.");
-                    } else {
-                        System.out.println("O vetor está cheio. Não é possível incluir mais valores.");
-                    }
+                   
                     break;
                 case 2:
                     System.out.println("informe o valor a ser procurado: ");
@@ -126,6 +118,19 @@ public class Uni6Exe10 {
         } while (op != 8);
 
         scan.close();
+    }
+
+    public int inserir(Scanner scan,int tamanho,int capacidade, int vetor[] ){
+        if (tamanho < capacidade) {
+            System.out.print("Digite o valor a ser incluído: ");
+           int valor = scan.nextInt();
+            vetor[tamanho] = valor;
+            tamanho++;
+            System.out.println("Valor " + valor + " incluído no vetor.");
+        } else {
+            System.out.println("O vetor está cheio. Não é possível incluir mais valores.");
+        }
+        return tamanho;
     }
     public static void main(String[] args) {
         new Uni6Exe10();
