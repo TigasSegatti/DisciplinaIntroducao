@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Uni6Exe10 {
     public Uni6Exe10() {
-       /* Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         int capacidade = 10;
         int tamanho = 0;
         int vetor[] = new int[10];
@@ -89,20 +89,25 @@ public class Uni6Exe10 {
                     }
                     break;
                 case 6:
+                //ordenar 
+                //colocado tamanho porque dessa forma considera apenas a quantidade de elementos que foram adicionados 
+                //vetor.lenght iria considerar posições nulas
                     int aux = 0;
-                    for (int i = 0; i < vetor.length; i++) {
-                        for (int j = 0; j < 9; j++) {
+                    for (int i = 0; i < tamanho; i++) {
+                        //Tamanho -1 pois termina em um anterior, pois termina em 9 e não dez 
+                        for (int j = 0; j < tamanho-1; j++) {
                             if (vetor[j] > vetor[j + 1]) {
                                 aux = vetor[j];
                                 vetor[j] = vetor[j + 1];
-                                vetor[j + 1] = aux;
+                                vetor[j + 1] = aux; // J+1 sempre considera uma posição a mais, por isso terá que ir até 8 
                             }
                         }
                     }
                     break;
                 case 7:
+                //Mesma coisa que 6
                 int temp= 0;
-                for(int i= 0; i<vetor.length;i++){
+                for(int i= 0; i<tamanho;i++){
                     for(int j=0;j<i;j++){
                         temp=vetor[i];
                         vetor[i]=vetor[j];
@@ -120,7 +125,9 @@ public class Uni6Exe10 {
 
         } while (op != 8);
 
-        scan.close();*/
+        scan.close();
+    }
+    /*
         Scanner scan = new Scanner(System.in);
         int vetor[]= new int[10];
         int quantidade,op=0;
@@ -190,6 +197,7 @@ public class Uni6Exe10 {
         
 
     }
+    */
     public static void main(String[] args) {
         new Uni6Exe10();
     }
