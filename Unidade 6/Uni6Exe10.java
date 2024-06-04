@@ -122,12 +122,53 @@ public class Uni6Exe10 {
 
         scan.close();*/
         Scanner scan = new Scanner(System.in);
-        
+        int vetor[]= new int[10];
+        int quantidade,op=0;
+
+        do{
+            System.out.println("Menu");
+            System.out.println("1- Incluir valor");
+            System.out.println("2-Pesquisar valor");
+            System.out.println("3-Alterar valor");
+            System.out.println("4-Excluir valor");
+            System.out.println("5-Mostrar valores");
+            System.out.println("6-Ordenar valores");
+            System.out.println("7-Inverter valores");
+            System.out.println("8-Sair do sistema");
+            System.out.println("informe o que deseja fazer: ");
+            op = scan.nextInt();
+            switch (op) {
+                case 1:
+                    //Inserir valor no vetor
+                    System.out.println("Informe um valor para ser inserido no vetor: ");
+                    int numero=scan.nextInt();
+                    quantidade=this.inserir(vetor, scan, numero);
+                    break;
+            
+                default:
+                    break;
+            }
+        }while(op!=8);
 
         scan.close();
 
 
 
+
+    }
+    private int inserir(int[] vetor,Scanner scan,int tamanho) {
+        if(tamanho<vetor.length){
+            System.out.println("informe um valor para armazenar: ");
+            int numero=scan.nextInt();
+            vetor[tamanho]=numero;
+            tamanho++;
+            System.out.println("Inserido com sucesso");    
+        }
+        else{
+            System.out.println("Vetor Cheio.");
+        }
+        return tamanho;
+        
 
     }
     public static void main(String[] args) {
