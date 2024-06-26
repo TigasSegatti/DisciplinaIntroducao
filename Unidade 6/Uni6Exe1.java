@@ -9,7 +9,7 @@ public class Uni6Exe1 {
             numeros[i]=scan.nextInt();
         }
         for(int j= numeros.length;j>=0;j--){
-            System.out.println("index: "+j+" valor guardado: "+numeros[j]);
+            System.out.println("Index número: "+j+" valor guardado: "+numeros[j]);
         }
         scan.close();
     }
